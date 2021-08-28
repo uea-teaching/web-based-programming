@@ -9,4 +9,4 @@
 !slides/Makefile
 !slides/assets
 !slides/assets/*.css
-
+!slides/assets/*.png
