@@ -1,0 +1,12 @@
+*
+
+!README.md
+!Makefile
+!.gitignore
+
+!slides
+!slides/*.md
+!slides/Makefile
+!slides/assets
+!slides/assets/*.css
+

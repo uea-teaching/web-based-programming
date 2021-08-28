@@ -1,0 +1,27 @@
+.bright {
+    color: #00ff2a;
+}
+
+
+em {
+    font-style: italic;
+    color: #FF6EC7;
+}
+
+strong {
+    color: rgb(255, 169, 20);
+}
+
+code {
+    color: coral;
+    font: "Courier New", monospace;
+    font-size: 0.95em;
+}
+
+.column {
+    margin: 10px 0 15px 0px;
+    text-align: left;
+    z-index: -10;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
