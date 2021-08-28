@@ -22,8 +22,6 @@ all : $(HTM) $(BMR)
 	-V center=true \
 	-V transition=slide \
 	-o $@
-	# fixing data-animate
-	sed -i 's/data-auto-animate"/" data-auto-animate/' $@
 
 %.bmr.pdf : %.md
 	pandoc $^ \
