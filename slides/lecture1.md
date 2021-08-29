@@ -34,7 +34,6 @@ Here are some links to recommended documentation.
 
 ## Canvas HTML element {data-auto-animate="true"}
 
-
 `<canvas id="mycanvas" width="150" height="150"></canvas>`
 
 * The `<canvas>` element has two attributes, width and height.
@@ -53,7 +52,8 @@ Here are some links to recommended documentation.
 
 ``` {.html}
 <canvas id="mycanvas" width="150" height="150">
-  display this text if the browser does not support HTML5 canvas
+  display this text if the browser 
+  does not support HTML5 canvas
 </canvas>
 ```
 
@@ -80,7 +80,8 @@ Here are some links to recommended documentation.
 
 ::: notes
 The HTML is simple and concise. 
-The `<canvas>` element is the only element that is required beyond the standard boiler plate.
+The `<canvas>` element is the only element that is 
+required beyond the standard boiler plate.
 :::
 
 
@@ -94,7 +95,8 @@ The `<canvas>` element creates a fixed-size drawing surface that exposes a rende
 We will use the 2D rendering context.
 
 ::: notes
-Other contexts provide different types of rendering; for example, WebGL uses a 3D context based on OpenGL.
+Other contexts provide different types of rendering; 
+for example, WebGL uses a 3D context based on OpenGL.
 :::
 
 
@@ -149,6 +151,25 @@ Clears the specified rectangular area, making it fully transparent.
 
 ## Drawing {data-auto-animate="true"}
 
+::: columns
+:::: column
+![](assets/rectangle.png)
+::::
+:::: {.column width=55%}
+``` {.js }
+const x = y = 75,
+      w = h = 250;
+ctx.fillStyle = "red";
+ctx.strokeStyle = "blue";
+ctx.fillRect(x, y, w, h);
+ctx.strokeRect(x, y, w, h);
+```
+::::
+:::
+
+
+## Drawing {data-auto-animate="true"}
+
 A path is a list of points, connected by segments of lines that can be of different shapes, of different width and of different color.
 
 
@@ -160,15 +181,10 @@ It is possible to build any complex shape using a combination of the path tools.
 ## Drawing {data-auto-animate="true"}
 
 ::: columns
-
 :::: column
-
 ![](assets/triangle.png)
-
 ::::
-
-:::: column
-
+:::: {.column width=55%}
 ``` {.js }
 ctx.fillStyle = "red";
 ctx.beginPath();
@@ -178,8 +194,8 @@ ctx.lineTo(300, 25);
 ctx.fill();
 ```
 ::::
-
 :::
+
 
 ## Drawing {data-auto-animate="true"}
 
@@ -198,29 +214,83 @@ Draws an arc with the given control points and radius,
 connected to the previous point by a straight line.
 :::
 
+
 ## Drawing {data-auto-animate="true"}
 
-`ctx.fillStyle = 'coral';`
+::: columns
+:::: column 
+![](assets/circle.png)
+::::
+:::: {.column width=55%}
+``` {.js }
+ctx.fillStyle = "red";
+ctx.arc(200, 200, 150, 0, 
+  Math.PI * 2);
+ctx.fill();
+```
+::::
+:::
 
-#
-### Animation
 
-## {data-auto-animate="true"}
-#### `requestAnimationFrame()` 
+## Drawing {data-auto-animate="true"}
+
+The canvas rendering context provides two methods to render *text*:
+
+* `fillText(text, x, y [, maxWidth])`
+* `strokeText(text, x, y [, maxWidth])`
+
+::: notes
+Fills a given text at the given (x,y) position. Optionally with a maximum width to draw.
+
+Strokes a given text at the given (x,y) position. Optionally with a maximum width to draw.
+:::
+
+
+## Drawing {data-auto-animate="true"}
+
+::: columns
+:::: column
+![](assets/text.png)
+::::
+:::: {.column width=55%}
+``` {.js }
+const text = "Hello World!";
+const x = 15, y = 200;
+ctx.fillStyle = "red";
+ctx.strokeStyle = "blue";
+ctx.font = '72px serif';
+ctx.fillText(text, x, y);
+ctx.strokeText(text, x, y);
+```
+::::
+:::
+
+
+## Drawing {data-auto-animate="true"}
+
+There are many more functions available for drawing.
+
+Consult the documentation, and see the examples 
+[here](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) for a complete list.
+
+
+# Animation {background-image="assets/horse.gif"}
+
+Creating the impression of motion!
+
+
+##  Animation {data-auto-animate="true"}
+
+`requestAnimationFrame()` 
 
 This method tells the browser that you wish to perform an animation and requests that the browser calls a callback function to update an animation before the next repaint. 
 
 
-## {data-auto-animate="true"}
-#### `requestAnimationFrame()` 
+##  Animation {data-auto-animate="true"}
+
+`requestAnimationFrame()` 
 
 The callback function is passed a *timestamp*.
 
 The timestamp is the number of milliseconds since the page was loaded.
 
-
-## H2 header
-
-### H3 header
-
-#### H4 header
