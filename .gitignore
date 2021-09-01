@@ -10,3 +10,9 @@
 !slides/assets
 !slides/assets/*.css
 !slides/assets/*.png
+
+!invaders
+!invaders/*.html
+!invaders/*.js
+!invaders/*.css
+!invaders/*.png
