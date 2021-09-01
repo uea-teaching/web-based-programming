@@ -170,12 +170,14 @@ ctx.strokeRect(x, y, w, h);
 
 ## Drawing {data-auto-animate="true"}
 
-A path is a list of points, connected by segments of lines that can be of different shapes, of different width and of different color.
+A path is a list of points, connected by segments of lines that can 
+be of different shapes, of different width and of different color.
 
 
 ## Drawing {data-auto-animate="true"}
 
-It is possible to build any complex shape using a combination of the path tools.
+It is possible to build any complex shape using a 
+combination of the path tools.
 
 
 ## Drawing {data-auto-animate="true"}
@@ -240,9 +242,11 @@ The canvas rendering context provides two methods to render *text*:
 * `strokeText(text, x, y [, maxWidth])`
 
 ::: notes
-Fills a given text at the given (x,y) position. Optionally with a maximum width to draw.
+Fills a given text at the given (x,y) position. 
+Optionally with a maximum width to draw.
 
-Strokes a given text at the given (x,y) position. Optionally with a maximum width to draw.
+Strokes a given text at the given (x,y) position. 
+Optionally with a maximum width to draw.
 :::
 
 
@@ -283,7 +287,9 @@ Creating the impression of motion!
 
 `requestAnimationFrame()` 
 
-This method tells the browser that you wish to perform an animation and requests that the browser calls a callback function to update an animation before the next repaint. 
+This method tells the browser that you wish to perform an animation 
+and requests that the browser calls a callback function to update 
+an animation before the next repaint. 
 
 
 ##  Animation {data-auto-animate="true"}
@@ -294,3 +300,48 @@ The callback function is passed a *timestamp*.
 
 The timestamp is the number of milliseconds since the page was loaded.
 
+# User Control
+
+Capturing keyboard events.
+
+## Keyboard Events {data-auto-animate="true"}
+
+``` {.js data-line-numbers="1-9|1|3-5|7-9"}
+const KEYS = {};
+
+document.addEventListener("keydown", (event) => {
+    KEYS[event.code] = event.type === "keydown";
+});
+
+document.addEventListener("keyup", (event) => {
+    KEYS[event.code] = event.type === "keydown";
+});
+```
+
+::: notes
+We store keys pressed in a global constant object.
+Then, an event listener is attached to the document, 
+using an arrow function.
+As keys are pressed, the corresponding element in the object is set to true.
+:::
+
+# Sprites
+
+More complex graphics.
+
+## Sprites {data-auto-animate="true"}
+
+::: columns
+:::: column
+![](assets/sprites-slide.png){ width=80%}
+::::
+:::: column
+Storing all the image frames in a single file is often preferred for compression efficiency.
+::::
+:::
+
+##
+
+<video loop data-autoplay data-src="assets/invaders.mp4"></video>
+
+space invaders
