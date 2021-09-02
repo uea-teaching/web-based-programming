@@ -16,3 +16,9 @@
 !invaders/*.js
 !invaders/*.css
 !invaders/*.png
+
+!labs/
+!labs/Makefile
+!labs/*.md
+!labs/*.jpg
+!labs/*.png
