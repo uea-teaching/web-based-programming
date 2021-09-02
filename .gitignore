@@ -10,6 +10,8 @@
 !slides/assets
 !slides/assets/*.css
 !slides/assets/*.png
+!slides/assets/*.gif
+!slides/assets/*.mp4
 
 !invaders
 !invaders/*.html
