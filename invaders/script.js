@@ -30,8 +30,8 @@ function collide(a, b) {
 class Invader {
   constructor() {
     this.frame = 0
+    this.frames = [0, 41]
     this.prevTime = 0
-    this.sx = 0
     this.x = 0
     this.y = 0
     this.w = 40
@@ -40,23 +40,15 @@ class Invader {
   }
   draw() {
     if (this.dead) return
-    ctx.drawImage(
-      sprite,
-      this.sx,
-      0,
-      this.w,
-      this.h,
-      this.x,
-      this.y,
-      this.w,
-      this.h,
-    )
+    const [sx, sy, sw, sh] = [this.frames[this.frame], 0, this.w, this.h]
+    const [dx, dy, dw, dh] = [this.x, this.y, this.w, this.h]
+    ctx.drawImage(sprite, sx, sy, sw, sh, dx, dy, dw, dh)
   }
   update(time) {
     this.sx = 41 * this.frame
     if (time - this.prevTime > 500) {
       this.prevTime = time
-      this.frame = this.frame === 0 ? 1 : 0
+      this.frame = (this.frame + 1) % this.frames.length
     }
   }
 }
