@@ -13,7 +13,7 @@ strong {
 
 code {
   color: coral;
-  font: "Courier New", monospace;
+  font: 'Courier New', monospace;
   font-size: 0.95em;
 }
 
@@ -28,7 +28,7 @@ code {
   text-align: left;
 }
 
-.reveal pre{
-  font-size: 0.7em;
+.reveal pre {
+  font-size: 0.65em;
   overflow: hidden;
 }
