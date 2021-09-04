@@ -8,7 +8,13 @@ date: \today
 output: pdf_document
 ---
 
-The goal of this lab is to provide practical experience with the HTML5 canvas element. There is a lot of content in this lab, you might want to read through it before starting. The exercises build in complexity, and also involve altering previous exercises. I suggest you save each exercise as a separate file, to keep a record of your work.
+The goal of this lab is to provide practical experience
+with the HTML5 canvas element.
+There is a lot of content in this lab,
+you might want to read through it before starting.
+The exercises build in complexity, and also involve altering previous exercises.
+I suggest you save each exercise as a separate file,
+to keep a record of your work.
 
 # Starting
 
@@ -257,7 +263,7 @@ Change the `update` method to move the squares based on the keys that are presse
 Then modify the `animate` function to work on a single square, for example:
 
 ```{.js}
-square = new Square(100, 100, "red");
+let square = new Square(100, 100, "red");
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
