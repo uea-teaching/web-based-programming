@@ -40,9 +40,9 @@ class Invader {
   }
   draw() {
     if (this.dead) return
-    const [sx, sy, sw, sh] = [this.frames[this.frame], 0, this.w, this.h]
-    const [dx, dy, dw, dh] = [this.x, this.y, this.w, this.h]
-    ctx.drawImage(sprite, sx, sy, sw, sh, dx, dy, dw, dh)
+    const s = [this.frames[this.frame], 0, this.w, this.h]
+    const d = [this.x, this.y, this.w, this.h]
+    ctx.drawImage(sprite, ...s, ...d)
   }
   update(time) {
     this.sx = 41 * this.frame
@@ -177,17 +177,9 @@ class Defender {
     this.#shoot(time)
   }
   draw() {
-    ctx.drawImage(
-      sprite,
-      2,
-      53,
-      2 + this.w,
-      this.h,
-      this.x,
-      this.y,
-      this.w,
-      this.h,
-    )
+    const s = [2, 53, 2 + this.w, this.h]
+    const d = [this.x, this.y, this.w, this.h]
+    ctx.drawImage(sprite, ...s, ...d)
     this.missiles.forEach((missile) => missile.draw())
   }
 }
@@ -230,7 +222,7 @@ class Game {
   }
 }
 
-game = new Game()
+let game = new Game()
 
 function animate(time) {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
