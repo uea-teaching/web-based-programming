@@ -12,20 +12,15 @@ SCI 2.16a
 
 # Contents
 
-- The `canvas` element.
-- The drawing _context_.
-- Drawing shapes.
-- Animation with `requestAnimationFrame`.
-- Responding to events.
+::: incremental
 
-# Canvas
+- The `canvas` element
+- The rendering _context_
+- Drawing shapes
+- Animation with `requestAnimationFrame`
+- Sprites
+- Responding to events
 
-The Canvas _API_ provides a means for drawing graphics using JavaScript and the HTML `<canvas>` element.
-
-::: notes
-The canvas element is arguably the single most powerful HTML5 element,
-although its real power lies in the Canvas context,
-which you obtain from the canvas element itself.
 :::
 
 ## Documentation
@@ -86,6 +81,30 @@ Here are some links to recommended documentation.
 The HTML is simple and concise.
 The `<canvas>` element is the only element that is
 required beyond the standard boiler plate.
+:::
+
+# Canvas API
+
+The Canvas _API_ provides a means for drawing graphics using JavaScript and the HTML `<canvas>` element.
+
+::: notes
+The canvas element is arguably the single most powerful HTML5 element,
+although its real power lies in the Canvas context,
+which you obtain from the canvas element itself.
+:::
+
+## Canvas API
+
+We can use the canvas for:
+
+::: incremental
+
+- animation
+- game graphics
+- data visualization
+- image manipulation
+- real-time video
+
 :::
 
 ## The rendering context {data-auto-animate="true"}
@@ -295,9 +314,26 @@ The callback function is passed a _timestamp_.
 
 The timestamp is the number of milliseconds since the page was loaded.
 
-# User Control
+# Sprites
 
-Capturing keyboard events.
+More complex graphics.
+
+## Sprites {data-auto-animate="true"}
+
+::: columns
+:::: column
+![](assets/sprites-slide.png){ width=80%}
+::::
+:::: column
+Storing all the image frames in a single file is often preferred for compression efficiency.
+::::
+:::
+
+# Events
+
+Formally, an event is a message that is sent from the browser to a JavaScript function. Examples of events are: mouse clicks, key presses, and window resizes.
+
+Informally, we can include events in our animation that require some sort of response such as collision detection in a game.
 
 ## Keyboard Events {data-auto-animate="true"}
 
@@ -320,23 +356,8 @@ using an arrow function.
 As keys are pressed, the corresponding element in the object is set to true.
 :::
 
-# Sprites
-
-More complex graphics.
-
-## Sprites {data-auto-animate="true"}
-
-::: columns
-:::: column
-![](assets/sprites-slide.png){ width=80%}
-::::
-:::: column
-Storing all the image frames in a single file is often preferred for compression efficiency.
-::::
-:::
-
-##
+#
 
 <video loop data-autoplay data-src="assets/invaders.mp4"></video>
 
-space invaders
+Questions?
