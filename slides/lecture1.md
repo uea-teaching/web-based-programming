@@ -1,7 +1,8 @@
 ---
-title: Drawing Graphics
-subtitle: Accessing the canvas API
-section-titles: false
+title: Canvas Graphics
+subtitle: Web Based Programming - CMP4011A
+author: Dr. David Greenwood
+date: \today
 ---
 
 # Dr. David Greenwood
@@ -62,17 +63,17 @@ Here are some links to recommended documentation.
 
 ## Canvas HTML element {data-auto-animate="true"}
 
-```{.html data-line-numbers="|9" }
+```{.html data-line-numbers="|10" }
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
-    <title>Canvas</title>
+    <script src="script.js" defer></script>
+    <title>HTML Canvas</title>
 </head>
 <body>
     <canvas id="canvas"></canvas>
-    <script src="script.js"></script>
 </body>
 </html>
 ```
@@ -114,6 +115,8 @@ The `<canvas>` element creates a fixed-size drawing surface that exposes a rende
 ## The rendering context {data-auto-animate="true"}
 
 We will use the 2D rendering context.
+
+There is also a 3D rendering context, WebGL, we will not explore that here.
 
 ::: notes
 Other contexts provide different types of rendering;
