@@ -11,9 +11,9 @@ all : $(HTM) $(BMR)
 	--slide-level 2 \
 	--standalone \
 	--mathjax $(mj) \
-	--template /pandoc-data/reveal-code.html \
+	--template reveal-code.html \
 	--css assets/style.css \
-	-L /pandoc-data/revealjs-codeblock.lua \
+	-L revealjs-codeblock.lua \
 	-V highlightjs \
 	-V highlightjs-theme=monokai \
 	-V theme=night \
@@ -28,7 +28,7 @@ all : $(HTM) $(BMR)
 	-t beamer \
 	--slide-level 2 \
 	--dpi=96 \
-	-L /pandoc-data/beamer-noincrement.lua \
+	-L beamer-noincrement.lua \
 	-o $@
 
 clobber : 
