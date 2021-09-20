@@ -33,15 +33,15 @@ Start with the following HTML code:
 ```{.html}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <title>Canvas</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Game</title>
+  </head>
+  <body>
     <canvas id="canvas"></canvas>
-    <script src="script.js"></script>
-</body>
+  </body>
 </html>
 ```
 
