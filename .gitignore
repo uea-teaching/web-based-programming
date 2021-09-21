@@ -4,14 +4,14 @@
 !Makefile
 !.gitignore
 
-!slides
-!slides/*.md
-!slides/Makefile
-!slides/assets
-!slides/assets/*.css
-!slides/assets/*.png
-!slides/assets/*.gif
-!slides/assets/*.mp4
+!lectures
+!lectures/*.md
+!lectures/Makefile
+!lectures/assets
+!lectures/assets/*.css
+!lectures/assets/*.png
+!lectures/assets/*.gif
+!lectures/assets/*.mp4
 
 !invaders
 !invaders/*.html
