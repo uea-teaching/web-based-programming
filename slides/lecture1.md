@@ -5,12 +5,6 @@ author: Dr. David Greenwood
 date: \today
 ---
 
-# Dr. David Greenwood
-
-david.greenwood@uea.ac.uk
-
-SCI 2.16a
-
 # Contents
 
 ::: incremental
@@ -34,6 +28,12 @@ SCI 2.16a
 It is best to refer to canonical documentation for the Canvas API.
 Here are some links to recommended documentation.
 :::
+
+## Further reading
+
+The excellent and free online book, Eloquent JavaScript, by Marijn Haverbeke, has a [chapter](https://eloquentjavascript.net/17_canvas.html) on the canvas element.
+
+# Canvas Element
 
 ## Canvas HTML element {data-auto-animate="true"}
 
@@ -117,6 +117,8 @@ The `<canvas>` element creates a fixed-size drawing surface that exposes a rende
 We will use the 2D rendering context.
 
 There is also a 3D rendering context, WebGL, we will not explore that here.
+
+Other rendering contexts are proposed for the future.
 
 ::: notes
 Other contexts provide different types of rendering;
@@ -362,5 +364,3 @@ As keys are pressed, the corresponding element in the object is set to true.
 #
 
 <video loop data-autoplay data-src="assets/invaders.mp4"></video>
-
-Questions?
