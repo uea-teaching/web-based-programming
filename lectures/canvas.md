@@ -1,5 +1,5 @@
 ---
-title: Canvas Graphics
+title: Canvas 2D Graphics
 subtitle: Web Based Programming - CMP4011A
 author: Dr. David Greenwood
 date: \today
@@ -48,14 +48,14 @@ This is where it starts - the canvas DOM element.
 ## Canvas element {data-auto-animate="true"}
 
 ```{.html}
-<canvas width="150" height="150" id="mycanvas">
+<canvas width="150" height="150">
 </canvas>
 ```
 
-- The `<canvas>` element has two attributes, width and height.
-- Both are optional and can be set using DOM properties.
-- Default values are 300 pixels wide and 150 pixels high.
-- The `id` attribute is a global HTML attribute.
+- Two attributes: width and height.
+- Both optional
+- Can be set using DOM properties.
+- Default values are 300 wide 150 high.
 
 ::: notes
 Later, we will be able to access this particular canvas with getElementByID.
@@ -73,14 +73,15 @@ This behaviour is similar to an image.
 ## Canvas element {data-auto-animate="true"}
 
 ```{.html}
-<canvas width="150" height="150" id="mycanvas">
+<canvas width="150" height="150">
   display this text if the browser
   does not support HTML5 canvas
 </canvas>
 ```
 
 - Fallback content is placed between the open and closing tags.
-- The closing tag is **required**, else all subsequent content is ignored.
+- The closing tag is **required**...
+  - ...else all subsequent content is ignored.
 
 ## Canvas element {data-auto-animate="true"}
 
@@ -102,6 +103,8 @@ This behaviour is similar to an image.
 ::: notes
 Here is a simple HTML document with a canvas element.
 The `<canvas>` element goes in the body of the document.
+The `id` attribute is a global HTML attribute.
+We did not set a width and height attribute.
 :::
 
 # Canvas API
@@ -139,7 +142,7 @@ The `<canvas>` element creates a fixed-size drawing surface that exposes a rende
 
 ## The rendering context {data-auto-animate="true"}
 
-There is also a 3D rendering context, **webgl**.
+There is also a 3D rendering context: `webgl`
 
 This has many powerful features, including access to the graphics hardware, and openGL like shaders.
 
@@ -170,7 +173,7 @@ console.log(ctx);
 ```
 
 ::: notes
-I really encourage you to try this, you will see all the methods available.
+I really encourage you to do this, you will see all the methods available.
 :::
 
 ## The rendering context {data-auto-animate="true"}
@@ -206,6 +209,7 @@ Each unit of length is 1 pixel.
 
 ::: notes
 NB. This is by default. It is possible to transform the coordinate system.
+Width extends in the x, height extends in the y directions.
 :::
 
 ## Drawing {data-auto-animate="true"}
@@ -247,6 +251,37 @@ Clears the specified rectangular area, making it fully transparent.
 
 ## Drawing {data-auto-animate="true"}
 
+The color of the fill, thickness of the stroke, and so on,
+are not determined by an argument to the drawing method,
+but by properties of the context object.
+
+::: notes
+IMPORTANT
+:::
+
+## Drawing {data-auto-animate="true"}
+
+```{.js }
+ctx.fillStyle = "red";
+```
+
+- `fillStyle` defines the fill appearance.
+- Set to a string that specifies a color.
+- Uses the same color notation as CSS.
+
+## Drawing {data-auto-animate="true"}
+
+```{.js }
+ctx.strokeStyle = "blue";
+ctx.lineWidth = 5;
+```
+
+- `strokeStyle` specifies the colour of a stroked line.
+- Width is set by the `lineWidth` property.
+- `lineWidth` may be any positive number.
+
+## Drawing {data-auto-animate="true"}
+
 ::: columns
 :::: column
 ![](assets/rectangle.png)
@@ -267,13 +302,46 @@ ctx.strokeRect(x, y, w, h);
 
 ## Drawing {data-auto-animate="true"}
 
-A path is a list of points, connected by segments of lines that can
+A path is a sequence of points, connected by segments of lines that can
 be of different shapes, of different width and of different color.
 
 ## Drawing {data-auto-animate="true"}
 
 It is possible to build any complex shape using a
 combination of the path tools.
+
+## Drawing {data-auto-animate="true"}
+
+::: incremental
+
+- Paths are not values that can be stored and passed around.
+- You must make a sequence of method calls to describe its shape.
+
+:::
+
+## Drawing {data-auto-animate="true"}
+
+::: incremental
+
+- Each segment created with `lineTo` starts at the path’s current position.
+- The current position is usually the end of the last segment.
+- Or, it is the position passed to `moveTo`.
+
+:::
+
+## Drawing {data-auto-animate="true"}
+
+When filling a path:
+
+- Each shape is filled separately.
+- A path can have multiple shapes.
+- The path needs to be closed.
+
+## Drawing {data-auto-animate="true"}
+
+If the path is not already closed, a line is added from its end to its start.
+
+The shape enclosed by the now completed path is filled.
 
 ## Drawing {data-auto-animate="true"}
 
@@ -295,9 +363,28 @@ ctx.fill();
 ::::
 :::
 
+::: notes
+Our triangle example uses the implicit completion of the path.
+:::
+
 ## Drawing {data-auto-animate="true"}
 
-To draw curved lines we use the arc functions.
+A path may also contain curved lines.
+
+These are a bit more involved to draw.
+
+## Drawing {data-auto-animate="true"}
+
+We will skip these functions for now.
+
+- `quadraticCurveTo()`
+- `bezierCurveTo()`
+
+But it is useful to know that they are available.
+
+## Drawing {data-auto-animate="true"}
+
+To draw circle segments we use the arc functions.
 
 - `arc(x, y, radius, startAngle, endAngle, counterclockwise)`
 - `arcTo(x1, y1, x2, y2, radius)`
@@ -365,13 +452,6 @@ ctx.strokeText(text, x, y);
 
 ::::
 :::
-
-## Drawing {data-auto-animate="true"}
-
-There are many more functions available for drawing.
-
-Consult the documentation, and see the examples
-[here](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) for a complete list.
 
 # Animation {background-image="assets/horse.gif"}
 
