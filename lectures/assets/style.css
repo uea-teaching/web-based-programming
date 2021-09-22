@@ -1,0 +1,40 @@
+.bright {
+  color: #00ff2a;
+}
+
+em {
+  font-style: italic;
+  color: #ff6ec7;
+}
+
+strong {
+  color: rgb(255, 169, 20);
+}
+
+code {
+  color: coral;
+  font: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  font-size: 0.8em;
+  margin-left: 0.2em;
+}
+
+.reveal pre {
+  font-size: 0.65em;
+  overflow: hidden;
+}
