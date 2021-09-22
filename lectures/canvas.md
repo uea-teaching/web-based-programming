@@ -31,37 +31,58 @@ Here are some links to recommended documentation.
 
 ## Further reading
 
-The excellent and free online book, Eloquent JavaScript, by Marijn Haverbeke, has a [chapter](https://eloquentjavascript.net/17_canvas.html) on the canvas element.
+Eloquent JavaScript has a chapter on the canvas element.
 
-# Canvas Element
+- [https://eloquentjavascript.net](https://eloquentjavascript.net)
 
-## Canvas HTML element {data-auto-animate="true"}
+#
 
-`<canvas id="mycanvas" width="150" height="150"></canvas>`
+::: r-fit-text
+`<canvas>`
+:::
+
+::: notes
+This is where it starts - the canvas DOM element.
+:::
+
+## Canvas element {data-auto-animate="true"}
+
+```{.html}
+<canvas width="150" height="150" id="mycanvas">
+</canvas>
+```
 
 - The `<canvas>` element has two attributes, width and height.
 - Both are optional and can be set using DOM properties.
 - Default values are 300 pixels wide and 150 pixels high.
 - The `id` attribute is a global HTML attribute.
 
-## Canvas HTML element {data-auto-animate="true"}
+::: notes
+Later, we will be able to access this particular canvas with getElementByID.
+:::
+
+## Canvas element {data-auto-animate="true"}
 
 - The element can be sized by CSS, but during rendering is scaled to fit its layout size.
 - If the CSS sizing doesn't respect the ratio of the initial canvas, it will appear distorted.
 
-## Canvas HTML element {data-auto-animate="true"}
+::: notes
+This behaviour is similar to an image.
+:::
+
+## Canvas element {data-auto-animate="true"}
 
 ```{.html}
-<canvas id="mycanvas" width="150" height="150">
+<canvas width="150" height="150" id="mycanvas">
   display this text if the browser
   does not support HTML5 canvas
 </canvas>
 ```
 
 - Fallback content is placed between the open and closing tags.
-- The closing tag is _required_, else all subsequent content is ignored.
+- The closing tag is **required**, else all subsequent content is ignored.
 
-## Canvas HTML element {data-auto-animate="true"}
+## Canvas element {data-auto-animate="true"}
 
 ```{.html data-line-numbers="|10" }
 <!DOCTYPE html>
@@ -79,14 +100,14 @@ The excellent and free online book, Eloquent JavaScript, by Marijn Haverbeke, ha
 ```
 
 ::: notes
-The HTML is simple and concise.
-The `<canvas>` element is the only element that is
-required beyond the standard boiler plate.
+Here is a simple HTML document with a canvas element.
+The `<canvas>` element goes in the body of the document.
 :::
 
 # Canvas API
 
-The Canvas _API_ provides a means for drawing graphics using JavaScript and the HTML `<canvas>` element.
+The Canvas _API_ provides a means for drawing graphics using
+JavaScript and the `<canvas>` DOM element.
 
 ::: notes
 The canvas element is arguably the single most powerful HTML5 element,
@@ -114,11 +135,15 @@ The `<canvas>` element creates a fixed-size drawing surface that exposes a rende
 
 ## The rendering context {data-auto-animate="true"}
 
-We will use the 2D rendering context.
+### We will use the `2d` rendering context.
 
-There is also a 3D rendering context, WebGL, we will not explore that here.
+## The rendering context {data-auto-animate="true"}
 
-Other rendering contexts are proposed for the future.
+There is also a 3D rendering context, **webgl**.
+
+This has many powerful features, including access to the graphics hardware, and openGL like shaders.
+
+We will not cover the 3D context in this lecture.
 
 ::: notes
 Other contexts provide different types of rendering;
@@ -132,23 +157,52 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 ```
 
+You create a context with the getContext method on the `<canvas>` DOM element.
+
 ## The rendering context {data-auto-animate="true"}
 
 Access the Canvas API via the `ctx` object.
 
-You can inspect the context object in the console.
+You should inspect the context object in the console.
 
 ```{.js }
 console.log(ctx);
 ```
 
+::: notes
+I really encourage you to try this, you will see all the methods available.
+:::
+
+## The rendering context {data-auto-animate="true"}
+
+```{.js }
+console.log(ctx);
+```
+
+You will see current values for the attributes, and if you expand the
+`CanvasRenderingContext2D` field you will see the methods available.
+
 ## Drawing {data-auto-animate="true"}
+
+::: columns
+
+::::: {.column width=40%}
+
+![](assets/coordinates.png)
+
+:::::
+
+::::: column
 
 The rendering context has a coordinate system
 which, by default, places the _origin_ at the
 top left corner of the canvas.
 
 Each unit of length is 1 pixel.
+
+:::::
+
+:::
 
 ::: notes
 NB. This is by default. It is possible to transform the coordinate system.
@@ -158,11 +212,31 @@ NB. This is by default. It is possible to transform the coordinate system.
 
 Canvas supports two primitive shapes: rectangles and paths.
 
+A shape can be _filled_, meaning its area is given a certain color or pattern,
+or it can be _stroked_, which means a line is drawn along its edge.
+
+## Drawing {data-auto-animate="true"}
+
 There are three functions that draw rectangles on the canvas:
 
-- `fillRect(x, y, width, height)`
-- `strokeRect(x, y, width, height)`
-- `clearRect(x, y, width, height)`
+```{.js }
+ fillRect(x, y, width, height)
+ strokeRect(x, y, width, height)
+ clearRect(x, y, width, height)
+```
+
+## Drawing {data-auto-animate="true"}
+
+```{.js }
+ fillRect(x, y, width, height)
+ strokeRect(x, y, width, height)
+ clearRect(x, y, width, height)
+```
+
+The parameters are the same for all three functions:
+
+- `x, y` define the top left corner
+- then we have width and height
 
 ::: notes
 (x, y) are the coordinates of the top left corner of the rectangle.
@@ -336,9 +410,13 @@ Storing all the image frames in a single file is often preferred for compression
 
 # Events
 
-Formally, an event is a message that is sent from the browser to a JavaScript function. Examples of events are: mouse clicks, key presses, and window resizes.
+Formally, an event is a message that is sent from the browser to a JavaScript function.
 
-Informally, we can include events in our animation that require some sort of response such as collision detection in a game.
+Examples of events are: mouse clicks, key presses, and window resizes.
+
+## Events
+
+Informally, we can describe events in our animation that require some sort of response, such as collision detection in a game.
 
 ## Keyboard Events {data-auto-animate="true"}
 
