@@ -475,7 +475,22 @@ The timestamp is the number of milliseconds since the page was loaded.
 
 # Sprites
 
-More complex graphics.
+Bitmap graphics.
+
+## Sprites {data-auto-animate="true"}
+
+Images for computer graphics are usually in one of two categories:
+
+- Vector graphics
+- Bitmap graphics
+
+So far we have been working with vector graphics.
+
+## Sprites {data-auto-animate="true"}
+
+Bitmap graphics don’t specify shapes but work with **pixel** data.
+
+Pixel data defines values on a regular 2D grid.
 
 ## Sprites {data-auto-animate="true"}
 
