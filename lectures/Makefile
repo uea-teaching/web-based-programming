@@ -7,7 +7,7 @@ all : $(HTM) $(BMR)
 	pandoc $^ \
 	--defaults revealjs \
 	--css assets/style.css \
-	-V highlightjs-theme=github-dark \
+	-V highlightjs-theme=atom-one-dark \
 	-V theme=black \
 	-o $@
 
