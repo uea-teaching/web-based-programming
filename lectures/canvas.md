@@ -12,8 +12,8 @@ date: \today
 - The `canvas` element
 - The rendering _context_
 - Drawing shapes
-- Animation with `requestAnimationFrame`
 - Sprites
+- Animation with `requestAnimationFrame`
 - Responding to events
 
 :::
@@ -47,9 +47,16 @@ This is where it starts - the canvas DOM element.
 
 ## Canvas element {data-auto-animate="true"}
 
+A canvas is a single DOM element that contains a picture.
+
+Unlike an SVG picture, the canvas does not preserve shapes such that they can be moved or resized.
+
+The only way to move a shape is to _clear_ the canvas and _redraw_ it.
+
+## Canvas element {data-auto-animate="true"}
+
 ```{.html}
-<canvas width="150" height="150">
-</canvas>
+<canvas width="150" height="150"></canvas>
 ```
 
 - Two attributes: width and height.
@@ -63,6 +70,7 @@ Later, we will be able to access this particular canvas with getElementByID.
 
 ## Canvas element {data-auto-animate="true"}
 
+- A new canvas is transparent and shows as an empty space in the document.
 - The element can be sized by CSS, but during rendering is scaled to fit its layout size.
 - If the CSS sizing doesn't respect the ratio of the initial canvas, it will appear distorted.
 
@@ -136,13 +144,17 @@ We can use the canvas for:
 
 The `<canvas>` element creates a fixed-size drawing surface that exposes a rendering _context_.
 
+::: notes
+The notion of a context is quite common in programming. If you take a graphics course, you will likely encounter the openGL context, for example.
+:::
+
 ## The rendering context {data-auto-animate="true"}
 
-### We will use the `2d` rendering context.
+We will use the `2d` rendering context.
 
 ## The rendering context {data-auto-animate="true"}
 
-There is also a 3D rendering context: `webgl`
+There is also a 3D rendering context: **WebGL**
 
 This has many powerful features, including access to the graphics hardware, and openGL like shaders.
 
@@ -150,7 +162,7 @@ We will not cover the 3D context in this lecture.
 
 ::: notes
 Other contexts provide different types of rendering;
-for example, WebGL uses a 3D context based on OpenGL.
+for example, WebGL uses a 3D context similar to OpenGL.
 :::
 
 ## The rendering context {data-auto-animate="true"}
@@ -173,7 +185,7 @@ console.log(ctx);
 ```
 
 ::: notes
-I really encourage you to do this, you will see all the methods available.
+I strongly encourage you to do this, you will see all the methods available.
 :::
 
 ## The rendering context {data-auto-animate="true"}
@@ -182,8 +194,8 @@ I really encourage you to do this, you will see all the methods available.
 console.log(ctx);
 ```
 
-You will see current values for the attributes, and if you expand the
-`CanvasRenderingContext2D` field you will see the methods available.
+You will see current values for all the attributes, and if you expand the
+`CanvasRenderingContext2D` field you will see the many methods available.
 
 ## Drawing {data-auto-animate="true"}
 
@@ -390,12 +402,12 @@ To draw circle segments we use the arc functions.
 - `arcTo(x1, y1, x2, y2, radius)`
 
 ::: notes
-Draws an arc which is centred at (x, y) position with radius r starting at
+arc() ... Draws an arc which is centred at (x, y) position with radius r starting at
 startAngle and ending at endAngle
 going in the given direction
 indicated by counterclockwise (defaulting to clockwise).
 
-Draws an arc with the given control points and radius,
+arcTo() ... Draws an arc with the given control points and radius,
 connected to the previous point by a straight line.
 :::
 
@@ -453,26 +465,6 @@ ctx.strokeText(text, x, y);
 ::::
 :::
 
-# Animation {background-image="assets/horse.gif"}
-
-Creating the impression of motion!
-
-## Animation {data-auto-animate="true"}
-
-`requestAnimationFrame()`
-
-This method tells the browser that you wish to perform an animation
-and requests that the browser calls a callback function to update
-an animation before the next repaint.
-
-## Animation {data-auto-animate="true"}
-
-`requestAnimationFrame()`
-
-The callback function is passed a _timestamp_.
-
-The timestamp is the number of milliseconds since the page was loaded.
-
 # Sprites
 
 Bitmap graphics.
@@ -491,6 +483,32 @@ So far we have been working with vector graphics.
 Bitmap graphics don’t specify shapes but work with **pixel** data.
 
 Pixel data defines values on a regular 2D grid.
+
+## Sprites {data-auto-animate="true"}
+
+The `drawImage()` method allows us to draw pixel data onto a canvas.
+
+This pixel data can originate from an <img> element or from another canvas.
+
+## Sprites {data-auto-animate="true"}
+
+```{.js }
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let img = document.createElement("img");
+img.src = "img.png";
+
+img.addEventListener("load", () => {
+  ctx.drawImage(img, 0, 0);
+});
+```
+
+::: notes
+
+This example creates a detached <img> element and loads an image file into it. But it cannot immediately start drawing from this picture because the browser may not have loaded it yet. To deal with this, we register a "load" event handler and do the drawing after the image has loaded.
+
+:::
 
 ## Sprites {data-auto-animate="true"}
 
@@ -534,6 +552,24 @@ using an arrow function.
 As keys are pressed, the corresponding element in the object is set to true.
 :::
 
+# Animation {background-image="assets/horse.gif"}
+
+## Animation {data-auto-animate="true"}
+
+`requestAnimationFrame()`
+
+This method tells the browser that you wish to perform an animation
+and requests that the browser calls a callback function to update
+an animation before the next repaint.
+
+## Animation {data-auto-animate="true"}
+
+`requestAnimationFrame()`
+
+The callback function is passed a _timestamp_.
+
+The timestamp is the number of milliseconds since the page was loaded.
+
 #
 
-<video loop data-autoplay data-src="assets/invaders.mp4"></video>
+![](assets/invaders.gif){ width=80%}
