@@ -76,6 +76,8 @@ Later, we will be able to access this particular canvas with getElementByID.
 
 ::: notes
 This behaviour is similar to an image.
+TIP: if you want to save the canvas as an image - you might want to fill it with a solid colour.
+(fillRect()).
 :::
 
 ## Canvas element {data-auto-animate="true"}
@@ -514,7 +516,7 @@ Why is this?
 
 ## Bitmap graphics {data-auto-animate="true"}
 
-It is **essential** to ensure the image resource is loaded before drawing it.
+It is **essential** to ensure the image resource is loaded _before_ drawing.
 
 ## Bitmap graphics {data-auto-animate="true"}
 
@@ -551,12 +553,19 @@ The `drawImage()` method can take two further arguments:
 The `drawImage()` method also has a nine argument version which lets us specify the source rectangle:
 
 - `drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)`
-- The first argument is the image.
 - `sx, sy, sWidth, sHeight` define the source rectangle.
+- `dx, dy, dWidth, dHeight` define the destination rectangle.
 
 ::: notes
 This means we can trim out a section if the source image, then place it on the canvas, at any scale.
 :::
+
+## Sprites {data-auto-animate="true"}
+
+Sprites are two-dimensional images included in a larger scene.
+
+- Often used for animation.
+- Multiple poses can be stored in one image - a sprite sheet.
 
 ## Sprites {data-auto-animate="true"}
 
@@ -566,6 +575,37 @@ This means we can trim out a section if the source image, then place it on the c
 ::::
 :::: column
 Storing all the image frames in a single file is often preferred for compression efficiency.
+::::
+:::
+
+## Sprites {data-auto-animate="true"}
+
+::: columns
+:::: column
+![](assets/sprites-slide.png){width=80%}
+::::
+:::: column
+![](assets/cropped.png){width=80%}
+::::
+:::
+
+The ability to select a source rectangle allows us to a portion of the entire sheet.
+
+## Sprites {data-auto-animate="true"}
+
+::: columns
+:::: column
+
+![](assets/cropped.png)
+
+::::
+:::: {.column width=55%}
+
+- Source rectangle is `41, 0, 60, 29`
+- Destination is `100, 100, 180, 87`
+- We have "cut out" a portion of the sprite sheet and placed it on the canvas.
+- The canvas respects the alpha value of the source image.
+
 ::::
 :::
 
