@@ -47,9 +47,9 @@ This is where it starts - the canvas DOM element.
 
 ## Canvas element {data-auto-animate="true"}
 
-A canvas is a single DOM element that contains a picture.
+A canvas is a single DOM element that contains a image.
 
-Unlike an SVG picture, the canvas does not preserve shapes such that they can be moved or resized.
+Unlike an SVG image, the canvas does not preserve shapes such that they can be moved or resized.
 
 The only way to move a shape is to _clear_ the canvas and _redraw_ it.
 
@@ -197,6 +197,8 @@ console.log(ctx);
 You will see current values for all the attributes, and if you expand the
 `CanvasRenderingContext2D` field you will see the many methods available.
 
+# Drawing
+
 ## Drawing {data-auto-animate="true"}
 
 ::: columns
@@ -228,7 +230,7 @@ Width extends in the x, height extends in the y directions.
 
 Canvas supports two primitive shapes: rectangles and paths.
 
-A shape can be _filled_, meaning its area is given a certain color or pattern,
+A shape can be _filled_, meaning its area is given a certain colour or pattern,
 or it can be _stroked_, which means a line is drawn along its edge.
 
 ## Drawing {data-auto-animate="true"}
@@ -263,7 +265,7 @@ Clears the specified rectangular area, making it fully transparent.
 
 ## Drawing {data-auto-animate="true"}
 
-The color of the fill, thickness of the stroke, and so on,
+The colour of the fill, thickness of the stroke, and so on,
 are not determined by an argument to the drawing method,
 but by properties of the context object.
 
@@ -278,8 +280,8 @@ ctx.fillStyle = "red";
 ```
 
 - `fillStyle` defines the fill appearance.
-- Set to a string that specifies a color.
-- Uses the same color notation as CSS.
+- Set to a string that specifies a colour.
+- Uses the same colour notation as CSS.
 
 ## Drawing {data-auto-animate="true"}
 
@@ -301,8 +303,8 @@ ctx.lineWidth = 5;
 :::: {.column width=55%}
 
 ```{.js }
-const x = y = 75,
-      w = h = 250;
+const x = y = 75;
+const w = h = 250;
 ctx.fillStyle = "red";
 ctx.strokeStyle = "blue";
 ctx.fillRect(x, y, w, h);
@@ -312,17 +314,17 @@ ctx.strokeRect(x, y, w, h);
 ::::
 :::
 
-## Drawing {data-auto-animate="true"}
+## Paths {data-auto-animate="true"}
 
 A path is a sequence of points, connected by segments of lines that can
-be of different shapes, of different width and of different color.
+be of different shapes, of different width and of different colour.
 
-## Drawing {data-auto-animate="true"}
+## Paths {data-auto-animate="true"}
 
 It is possible to build any complex shape using a
 combination of the path tools.
 
-## Drawing {data-auto-animate="true"}
+## Paths {data-auto-animate="true"}
 
 ::: incremental
 
@@ -331,7 +333,7 @@ combination of the path tools.
 
 :::
 
-## Drawing {data-auto-animate="true"}
+## Paths {data-auto-animate="true"}
 
 ::: incremental
 
@@ -341,7 +343,7 @@ combination of the path tools.
 
 :::
 
-## Drawing {data-auto-animate="true"}
+## Paths {data-auto-animate="true"}
 
 When filling a path:
 
@@ -349,13 +351,13 @@ When filling a path:
 - A path can have multiple shapes.
 - The path needs to be closed.
 
-## Drawing {data-auto-animate="true"}
+## Paths {data-auto-animate="true"}
 
 If the path is not already closed, a line is added from its end to its start.
 
 The shape enclosed by the now completed path is filled.
 
-## Drawing {data-auto-animate="true"}
+## Paths {data-auto-animate="true"}
 
 ::: columns
 :::: column
@@ -379,22 +381,23 @@ ctx.fill();
 Our triangle example uses the implicit completion of the path.
 :::
 
-## Drawing {data-auto-animate="true"}
+## Curves {data-auto-animate="true"}
 
 A path may also contain curved lines.
 
 These are a bit more involved to draw.
 
-## Drawing {data-auto-animate="true"}
+## Curves {data-auto-animate="true"}
 
-We will skip these functions for now.
+Complex curves and shapes can be drawn using _Bezier_ and _quadratic_ curves.
+We wont cover these functions for now.
 
 - `quadraticCurveTo()`
 - `bezierCurveTo()`
 
 But it is useful to know that they are available.
 
-## Drawing {data-auto-animate="true"}
+## Curves {data-auto-animate="true"}
 
 To draw circle segments we use the arc functions.
 
@@ -405,13 +408,13 @@ To draw circle segments we use the arc functions.
 arc() ... Draws an arc which is centred at (x, y) position with radius r starting at
 startAngle and ending at endAngle
 going in the given direction
-indicated by counterclockwise (defaulting to clockwise).
+indicated by counter clockwise (defaulting to clockwise).
 
 arcTo() ... Draws an arc with the given control points and radius,
 connected to the previous point by a straight line.
 :::
 
-## Drawing {data-auto-animate="true"}
+## Curves {data-auto-animate="true"}
 
 ::: columns
 :::: column
@@ -421,15 +424,14 @@ connected to the previous point by a straight line.
 
 ```{.js }
 ctx.fillStyle = "red";
-ctx.arc(200, 200, 150, 0,
-  Math.PI * 2);
+ctx.arc(200, 200, 150, 0, Math.PI * 2);
 ctx.fill();
 ```
 
 ::::
 :::
 
-## Drawing {data-auto-animate="true"}
+## Text {data-auto-animate="true"}
 
 The canvas rendering context provides two methods to render _text_:
 
@@ -444,7 +446,7 @@ Strokes a given text at the given (x,y) position.
 Optionally with a maximum width to draw.
 :::
 
-## Drawing {data-auto-animate="true"}
+## Text {data-auto-animate="true"}
 
 ::: columns
 :::: column
@@ -467,30 +469,54 @@ ctx.strokeText(text, x, y);
 
 # Sprites
 
-Bitmap graphics.
-
-## Sprites {data-auto-animate="true"}
+## Bitmap graphics {data-auto-animate="true"}
 
 Images for computer graphics are usually in one of two categories:
 
 - Vector graphics
 - Bitmap graphics
 
-So far we have been working with vector graphics.
+So far we have been working with vector graphics - where we have specified
+shapes with lines and curves.
 
-## Sprites {data-auto-animate="true"}
+## Bitmap graphics {data-auto-animate="true"}
 
 Bitmap graphics don’t specify shapes but work with **pixel** data.
 
 Pixel data defines values on a regular 2D grid.
 
-## Sprites {data-auto-animate="true"}
+::: notes
+Sometimes called raster graphics.
+:::
+
+## Bitmap graphics {data-auto-animate="true"}
 
 The `drawImage()` method allows us to draw pixel data onto a canvas.
 
 This pixel data can originate from an <img> element or from another canvas.
 
-## Sprites {data-auto-animate="true"}
+```{.js }
+let img = document.createElement("img");
+img.src = "img.png";
+```
+
+## Bitmap graphics {data-auto-animate="true"}
+
+However, if we just call `drawImage()`, it is unlikely to display the image as we expect.
+
+```{.js }
+let img = document.createElement("img");
+img.src = "img.png";
+ctx.drawImage(img, 0, 0);
+```
+
+Why is this?
+
+## Bitmap graphics {data-auto-animate="true"}
+
+It is **essential** to ensure the image resource is loaded before drawing it.
+
+## Bitmap graphics {data-auto-animate="true"}
 
 ```{.js }
 const canvas = document.getElementById("canvas");
@@ -505,21 +531,61 @@ img.addEventListener("load", () => {
 ```
 
 ::: notes
+This example creates a detached <img> element and loads an image file into it.
+But it cannot immediately start drawing from this picture because the browser
+may not have loaded it yet. To deal with this, we register a "load" event
+handler and do the drawing after the image has loaded.
+:::
 
-This example creates a detached <img> element and loads an image file into it. But it cannot immediately start drawing from this picture because the browser may not have loaded it yet. To deal with this, we register a "load" event handler and do the drawing after the image has loaded.
+## Bitmap graphics {data-auto-animate="true"}
 
+In the example on the previous slide, we used the `drawImage(image, dx, dy)` method to draw our image at the origin of the canvas.
+
+The `drawImage()` method can take two further arguments:
+
+- `drawImage(image, dx, dy, dWidth, dHeight)`
+- this lets us scale the image.
+
+## Bitmap graphics {data-auto-animate="true"}
+
+The `drawImage()` method also has a nine argument version which lets us specify the source rectangle:
+
+- `drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)`
+- The first argument is the image.
+- `sx, sy, sWidth, sHeight` define the source rectangle.
+
+::: notes
+This means we can trim out a section if the source image, then place it on the canvas, at any scale.
 :::
 
 ## Sprites {data-auto-animate="true"}
 
 ::: columns
 :::: column
-![](assets/sprites-slide.png){ width=80%}
+![](assets/sprites-slide.png){width=80%}
 ::::
 :::: column
 Storing all the image frames in a single file is often preferred for compression efficiency.
 ::::
 :::
+
+# Animation {background-image="assets/horse.gif"}
+
+## Animation {data-auto-animate="true"}
+
+`requestAnimationFrame()`
+
+This method tells the browser that you wish to perform an animation
+and requests that the browser calls a callback function to update
+an animation before the next repaint.
+
+## Animation {data-auto-animate="true"}
+
+`requestAnimationFrame()`
+
+The callback function is passed a _timestamp_.
+
+The timestamp is the number of milliseconds since the page was loaded.
 
 # Events
 
@@ -551,24 +617,6 @@ Then, an event listener is attached to the document,
 using an arrow function.
 As keys are pressed, the corresponding element in the object is set to true.
 :::
-
-# Animation {background-image="assets/horse.gif"}
-
-## Animation {data-auto-animate="true"}
-
-`requestAnimationFrame()`
-
-This method tells the browser that you wish to perform an animation
-and requests that the browser calls a callback function to update
-an animation before the next repaint.
-
-## Animation {data-auto-animate="true"}
-
-`requestAnimationFrame()`
-
-The callback function is passed a _timestamp_.
-
-The timestamp is the number of milliseconds since the page was loaded.
 
 #
 
