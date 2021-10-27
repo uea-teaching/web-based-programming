@@ -578,6 +578,11 @@ Storing all the image frames in a single file is often preferred for compression
 ::::
 :::
 
+::: notes
+For example, png supports transparency in the alpha channel,
+and run length encoding is used to reduce the size of the image.
+:::
+
 ## Sprites {data-auto-animate="true"}
 
 ::: columns
@@ -589,7 +594,7 @@ Storing all the image frames in a single file is often preferred for compression
 ::::
 :::
 
-The ability to select a source rectangle allows us to a portion of the entire sheet.
+The ability to select a source rectangle allows us to render a section of the entire sheet.
 
 ## Sprites {data-auto-animate="true"}
 
@@ -601,9 +606,9 @@ The ability to select a source rectangle allows us to a portion of the entire sh
 ::::
 :::: {.column width=55%}
 
-- Source rectangle is `41, 0, 60, 29`
-- Destination is `100, 100, 180, 87`
-- We have "cut out" a portion of the sprite sheet and placed it on the canvas.
+- Source rectangle is `41,0,40,29`
+- Destination is `200,100,120,87`
+- We have "cut out" a region of the sprite sheet and placed it on the canvas.
 - The canvas respects the alpha value of the source image.
 
 ::::
@@ -657,6 +662,16 @@ Then, an event listener is attached to the document,
 using an arrow function.
 As keys are pressed, the corresponding element in the object is set to true.
 :::
+
+## Collision Detection {data-auto-animate="true"}
+
+## AABB Collision Detection {data-auto-animate="true"}
+
+Axis Aligned Bounding Boxes (AABB)
+
+## Circular Collision Detection {data-auto-animate="true"}
+
+Radius-based collision detection
 
 #
 
