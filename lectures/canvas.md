@@ -541,12 +541,14 @@ handler and do the drawing after the image has loaded.
 
 ## Bitmap graphics {data-auto-animate="true"}
 
-In the example on the previous slide, we used the `drawImage(image, dx, dy)` method to draw our image at the origin of the canvas.
-
-The `drawImage()` method can take two further arguments:
+In addition to the previous example, the `drawImage()` method can take two further arguments:
 
 - `drawImage(image, dx, dy, dWidth, dHeight)`
 - this lets us scale the image.
+
+::: notes
+In the example on the previous slide, we used the `drawImage(image, dx, dy)` method to draw our image at the origin of the canvas.
+:::
 
 ## Bitmap graphics {data-auto-animate="true"}
 
@@ -658,16 +660,137 @@ Draw one image, then draw another image _in the same place_.
 `requestAnimationFrame()`
 
 This method tells the browser that you wish to perform an animation
-and requests that the browser calls a callback function to update
+and requests that the browser calls a **callback** function to update
 an animation before the next repaint.
+
+::: notes
+Formerly, to create an animation in JavaScript, we relied on setTimeout() called recursively or setInterval() to repeatedly execute some code to make changes to an element frame by frame, such as once every 50 milliseconds
+:::
 
 ## Animation {data-auto-animate="true"}
 
 `requestAnimationFrame()`
 
+A **callback** is a function passed as an argument to another function.
+
 The callback function is passed a _timestamp_.
 
-The timestamp is the number of milliseconds since the page was loaded.
+The timestamp gives the number of _milliseconds_ since the page was loaded.
+
+::: notes
+The timestamp value therefore increases while the page remains loaded.
+:::
+
+## Using a callback function {data-auto-animate="true"}
+
+```{.js }
+function myCallBack(timestamp) {
+  console.log(timestamp)
+}
+
+requestAnimationFrame(myCallBack)
+```
+
+## Using a callback function {data-auto-animate="true"}
+
+You will notice that we get only one value printed to console.
+
+We need to call `requestAnimationFrame()` again to get the next value.
+
+::: notes
+and again, and again...
+:::
+
+## Recursion {data-auto-animate="true"}
+
+We can do this using **recursion**.
+
+```{.js }
+function myCallBack(timestamp) {
+  console.log(timestamp)
+  requestAnimationFrame(myCallBack)
+}
+
+myCallBack()
+```
+
+::: notes
+Recursion is a technique that allows a function to call itself.
+It is a tricky subject to understand, so for now I will just give example code.
+:::
+
+## Recursion {data-auto-animate="true"}
+
+NB: Here we make a call to our function, to start the recursion.
+
+```{.js data-line-numbers="6"}
+function myCallBack(timestamp) {
+  console.log(timestamp)
+  requestAnimationFrame(myCallBack)
+}
+
+myCallBack()
+```
+
+## Recursion {data-auto-animate="true"}
+
+How often does the callback function get called?
+
+```
+1396.32
+1412.986
+1429.652
+1446.318
+1462.984
+1479.65
+1496.316
+```
+
+::: notes
+Around 16 or 17 ms?
+:::
+
+## Using a callback function {data-auto-animate="true"}
+
+Often we want to do something after a certain amount of time has passed.
+
+To do this, we can store the previous time globally and compare it to the current time.
+
+We can write a condition to check if the time has passed in our callback.
+
+## Using a callback function {data-auto-animate="true"}
+
+```{.js data-line-numbers="1|4-6|8|11"}
+let prevTime = 0
+
+function myCallBack(timestamp) {
+  if (timestamp - prevTime > 500) {
+    prevTime = timestamp
+    console.log(timestamp)
+  }
+  requestAnimationFrame(myCallBack)
+}
+
+myCallBack()
+```
+
+## Using a callback function {data-auto-animate="true"}
+
+Now we get this sort of output:
+
+```
+514.689
+1031.335
+1547.981
+2064.627
+2581.273
+3097.919
+3598.031
+```
+
+::: notes
+Why is it not 500, 1000, 1500, etc?
+:::
 
 # Events
 
