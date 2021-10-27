@@ -565,7 +565,7 @@ This means we can trim out a section if the source image, then place it on the c
 Sprites are two-dimensional images included in a larger scene.
 
 - Often used for animation.
-- Multiple poses can be stored in one image - a sprite sheet.
+- Multiple poses can be stored in one image - a **sprite sheet**.
 
 ## Sprites {data-auto-animate="true"}
 
@@ -613,6 +613,43 @@ The ability to select a source rectangle allows us to render a section of the en
 
 ::::
 :::
+
+## Sprites {data-auto-animate="true"}
+
+consider this source code:
+
+```{.js }
+const sw = 40, sh = 29
+const dw = 120, dh = 87
+
+sprite.addEventListener('load', () => {
+  ctx.drawImage(sprite, 0, 0, sw, sh, 50, 100, dw, dh)
+  ctx.drawImage(sprite, 41, 0, sw, sh, 200, 100, dw, dh)
+})
+```
+
+what does this code do?
+
+## Sprites {data-auto-animate="true"}
+
+::: columns
+:::: column
+
+![](assets/cropped2.png)
+
+::::
+:::: {.column width=55%}
+
+We have cut out **two** regions of the sprite sheet and placed them on the canvas.
+
+::::
+:::
+
+## Sprites {data-auto-animate="true"}
+
+Here is the Idea...
+
+Draw one image, then draw another image _in the same place_.
 
 # Animation {background-image="assets/horse.gif"}
 
