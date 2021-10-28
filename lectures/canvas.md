@@ -183,7 +183,7 @@ Access the Canvas API via the `ctx` object.
 You should inspect the context object in the console.
 
 ```{.js }
-console.log(ctx);
+console.log(ctx)
 ```
 
 ::: notes
@@ -193,7 +193,7 @@ I strongly encourage you to do this, you will see all the methods available.
 ## The rendering context {data-auto-animate="true"}
 
 ```{.js }
-console.log(ctx);
+console.log(ctx)
 ```
 
 You will see current values for all the attributes, and if you expand the
@@ -305,12 +305,12 @@ ctx.lineWidth = 5;
 :::: {.column width=55%}
 
 ```{.js }
-const x = y = 75;
-const w = h = 250;
-ctx.fillStyle = "red";
-ctx.strokeStyle = "blue";
-ctx.fillRect(x, y, w, h);
-ctx.strokeRect(x, y, w, h);
+const x = y = 75
+const w = h = 250
+ctx.fillStyle = "red"
+ctx.strokeStyle = "blue"
+ctx.fillRect(x, y, w, h)
+ctx.strokeRect(x, y, w, h)
 ```
 
 ::::
@@ -368,12 +368,12 @@ The shape enclosed by the now completed path is filled.
 :::: {.column width=55%}
 
 ```{.js }
-ctx.fillStyle = "red";
-ctx.beginPath();
-ctx.moveTo(75, 200);
-ctx.lineTo(300, 375);
-ctx.lineTo(300, 25);
-ctx.fill();
+ctx.fillStyle = "red"
+ctx.beginPath()
+ctx.moveTo(75, 200)
+ctx.lineTo(300, 375)
+ctx.lineTo(300, 25)
+ctx.fill()
 ```
 
 ::::
@@ -425,9 +425,9 @@ connected to the previous point by a straight line.
 :::: {.column width=55%}
 
 ```{.js }
-ctx.fillStyle = "red";
-ctx.arc(200, 200, 150, 0, Math.PI * 2);
-ctx.fill();
+ctx.fillStyle = "red"
+ctx.arc(200, 200, 150, 0, Math.PI * 2)
+ctx.fill()
 ```
 
 ::::
@@ -457,13 +457,13 @@ Optionally with a maximum width to draw.
 :::: {.column width=55%}
 
 ```{.js }
-const text = "Hello World!";
-const x = 15, y = 200;
-ctx.fillStyle = "red";
-ctx.strokeStyle = "blue";
-ctx.font = '72px serif';
-ctx.fillText(text, x, y);
-ctx.strokeText(text, x, y);
+const text = "Hello World!"
+const x = 15, y = 200
+ctx.fillStyle = "red"
+ctx.strokeStyle = "blue"
+ctx.font = '72px serif'
+ctx.fillText(text, x, y)
+ctx.strokeText(text, x, y)
 ```
 
 ::::
@@ -498,8 +498,8 @@ The `drawImage()` method allows us to draw pixel data onto a canvas.
 This pixel data can originate from an <img> element or from another canvas.
 
 ```{.js }
-let img = document.createElement("img");
-img.src = "img.png";
+let img = document.createElement("img")
+img.src = "img.png"
 ```
 
 ## Bitmap graphics {data-auto-animate="true"}
@@ -507,9 +507,9 @@ img.src = "img.png";
 However, if we just call `drawImage()`, it is unlikely to display the image as we expect.
 
 ```{.js }
-let img = document.createElement("img");
-img.src = "img.png";
-ctx.drawImage(img, 0, 0);
+let img = document.createElement("img")
+img.src = "img.png"
+ctx.drawImage(img, 0, 0)
 ```
 
 Why is this?
@@ -521,14 +521,14 @@ It is **essential** to ensure the image resource is loaded _before_ drawing.
 ## Bitmap graphics {data-auto-animate="true"}
 
 ```{.js }
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById("canvas")
+const ctx = canvas.getContext("2d")
 
-let img = document.createElement("img");
-img.src = "img.png";
+let img = document.createElement("img")
+img.src = "img.png"
 
 img.addEventListener("load", () => {
-  ctx.drawImage(img, 0, 0);
+  ctx.drawImage(img, 0, 0)
 });
 ```
 
@@ -792,6 +792,10 @@ Now we get this sort of output:
 Why is it not 500, 1000, 1500, etc?
 :::
 
+## Animation {data-auto-animate="true"}
+
+Instead of logging to console, we could draw our image on the canvas.
+
 # Events
 
 Formally, an event is a message that is sent from the browser to a JavaScript function.
@@ -805,15 +809,15 @@ Informally, we can describe events in our animation that require some sort of re
 ## Keyboard Events {data-auto-animate="true"}
 
 ```{.js data-line-numbers="1-9|1|3-5|7-9"}
-const KEYS = {};
+const KEYS = {}
 
 document.addEventListener("keydown", (event) => {
-    KEYS[event.code] = event.type === "keydown";
-});
+    KEYS[event.code] = event.type === "keydown"
+})
 
 document.addEventListener("keyup", (event) => {
-    KEYS[event.code] = event.type === "keydown";
-});
+    KEYS[event.code] = event.type === "keydown"
+})
 ```
 
 ::: notes
