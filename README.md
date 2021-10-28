@@ -4,6 +4,8 @@
 
 The learning material is available online [here](https://uea-teaching.github.io/web-based-programming/)
 
+I will make the slides available online and I will try to keep this material low-bandwidth.
+
 ## Building
 
 The content is written in `Markdown` and converted using `pandoc`.
