@@ -824,7 +824,9 @@ function draw(frame, x, y) {
 }
 ```
 
-- We need to clear the canvas before the next paint.
+::: notes
+We need to clear the canvas before the next paint.
+:::
 
 ## Animation {data-auto-animate="true"}
 
@@ -862,13 +864,15 @@ We now have our sprites frames drawn alternately.
 ::::
 :::
 
-# Events
+# Events {data-auto-animate="true"}
 
-Formally, an event is a message that is sent from the browser to a JavaScript function.
+Formally, an event is a message sent from the browser to a JavaScript function, for example:
 
-Examples of events are: mouse clicks, key presses, and window resizes.
+- mouse clicks
+- key presses
+- window resizes
 
-## Events
+## Events {data-auto-animate="true"}
 
 Informally, we can describe events in our animation that require some sort of response, such as collision detection in a game.
 
@@ -920,12 +924,92 @@ collision detection is certainly a big topic - but we need to make a start here.
 
 ## AABB Collision Detection {data-auto-animate="true"}
 
-Axis Aligned Bounding Boxes (AABB)
+What is an Axis Aligned Bounding Box (AABB)?
 
-## Circular Collision Detection {data-auto-animate="true"}
+::: notes
+The first type of collision we will look at is AABB. In 2D...
+:::
 
-Radius-based collision detection
+## AABB Collision Detection {data-auto-animate="true"}
+
+An AABB is the smallest rectangle that encloses an object and is _aligned_ with the _axes_ of the coordinate system.
+
+::: incremental
+
+- the left and right edges of the AABB are parallel to the x-axis
+- the top and bottom edges of the AABB are parallel to the y-axis
+
+:::
+
+## AABB Collision Detection {data-auto-animate="true"}
+
+compare two objects with x, y, width and height properties
+
+```{.js }
+function AABB(a, b) {
+  if (a.x > b.x + b.w) return false
+  if (a.x + a.w < b.x) return false
+  if (a.y > b.y + b.h) return false
+  if (a.y + a.h < b.y) return false
+  return true
+}
+```
+
+::: notes
+What does this function do?
+you will have to design your own object to use this function.
+:::
+
+## AABB Collision Detection {data-auto-animate="true"}
+
+You could consider a variation of this method to check if an object is within the bounds of the canvas.
+
+## Radial Collision Detection {data-auto-animate="true"}
+
+Radial collision detection uses Pythagoras' theorem to determine if two objects are touching.
+
+If the squared sum of the radii is greater than the squared distance between the centres, then the objects are colliding.
+
+## Radial Collision Detection {data-auto-animate="true"}
+
+compare two objects with x, y and radius properties
+
+```{.js }
+function radial(a, b) {
+  let radii = a.radius + b.radius
+  let dx = a.x - b.x
+  let dy = a.y - b.y
+  return radii * radii > dx * dx + dy * dy
+}
+```
+
+## Collision Detection {data-auto-animate="true"}
+
+Once we have detected a collision, we can respond...
+
+::: notes
+I wont go into physics and so on...
+:::
+
+# Summary
+
+::: incremental
+
+- The `canvas` element
+- Drawing shapes
+- Sprites
+- Animation with `requestAnimationFrame`
+- Events
+- Collisions
+
+:::
+
+::: notes
+We've covered a lot of material...
+:::
 
 #
+
+See you in the labs!
 
 ![](assets/invaders.gif){ width=80%}
