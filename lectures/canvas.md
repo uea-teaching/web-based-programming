@@ -796,6 +796,64 @@ Why is it not 500, 1000, 1500, etc?
 
 Instead of logging to console, we could draw our image on the canvas.
 
+## Animation {data-auto-animate="true"}
+
+Store some global variables.
+
+```{.js }
+let prevTime = 0
+let frame = 0
+```
+
+## Animation {data-auto-animate="true"}
+
+Write a draw function.
+
+```{.js data-line-numbers="1-6|5"}
+function draw(frame, x, y) {
+  let sx = 41
+  if (frame === 0) sx = 0
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+  ctx.drawImage(sprite, sx, 0, 40, 29, x, y, 120, 87)
+}
+```
+
+## Animation {data-auto-animate="true"}
+
+Finally, we call our animate function.
+
+```{.js data-line-numbers="1-10|4|6|10"}
+function animate(timestamp) {
+  if (timestamp - prevTime > 500) {
+    prevTime = timestamp
+    frame = (frame + 1) % 2
+  }
+  draw(frame, 100, 50)
+  requestAnimationFrame(animate)
+}
+
+animate()
+```
+
+::: notes
+We changed the callback name to something more descriptive.
+:::
+
+## Animation {data-auto-animate="true"}
+
+::: columns
+:::: column
+
+![](assets/sprite2frames.gif)
+
+::::
+:::: {.column width=55%}
+
+We now have our sprites frames drawn alternately.
+
+::::
+:::
+
 # Events
 
 Formally, an event is a message that is sent from the browser to a JavaScript function.
