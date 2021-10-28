@@ -49,9 +49,8 @@ This is where it starts - the canvas DOM element.
 
 A canvas is a single DOM element that contains a image.
 
-Unlike an SVG image, the canvas does not preserve shapes such that they can be moved or resized.
-
-The only way to move a shape is to _clear_ the canvas and _redraw_ it.
+- Does not preserve shapes such that they can be moved or resized.
+- The only way to move a shape is to _clear_ the canvas and _redraw_ it.
 
 ## Canvas element {data-auto-animate="true"}
 
@@ -59,8 +58,7 @@ The only way to move a shape is to _clear_ the canvas and _redraw_ it.
 <canvas width="150" height="150"></canvas>
 ```
 
-- Two attributes: width and height.
-- Both optional
+- Two optional attributes: width and height.
 - Can be set using DOM properties.
 - Default values are 300 wide 150 high.
 
@@ -90,7 +88,7 @@ TIP: if you want to save the canvas as an image - you might want to fill it with
 ```
 
 - Fallback content is placed between the open and closing tags.
-- The closing tag is **required**...
+- The closing tag is **required**
   - ...else all subsequent content is ignored.
 
 ## Canvas element {data-auto-animate="true"}
@@ -357,7 +355,7 @@ When filling a path:
 
 If the path is not already closed, a line is added from its end to its start.
 
-The shape enclosed by the now completed path is filled.
+The shape _enclosed_ by the now completed path is filled.
 
 ## Paths {data-auto-animate="true"}
 
@@ -387,7 +385,7 @@ Our triangle example uses the implicit completion of the path.
 
 A path may also contain curved lines.
 
-These are a bit more involved to draw.
+- These are a bit more involved to draw.
 
 ## Curves {data-auto-animate="true"}
 
@@ -397,7 +395,9 @@ We wont cover these functions for now.
 - `quadraticCurveTo()`
 - `bezierCurveTo()`
 
-But it is useful to know that they are available.
+::: fragment
+But you should know that they are available.
+:::
 
 ## Curves {data-auto-animate="true"}
 
@@ -435,7 +435,7 @@ ctx.fill()
 
 ## Text {data-auto-animate="true"}
 
-The canvas rendering context provides two methods to render _text_:
+The canvas rendering context provides two methods to render text:
 
 - `fillText(text, x, y [, maxWidth])`
 - `strokeText(text, x, y [, maxWidth])`
@@ -552,11 +552,11 @@ In the example on the previous slide, we used the `drawImage(image, dx, dy)` met
 
 ## Bitmap graphics {data-auto-animate="true"}
 
-The `drawImage()` method also has a nine argument version which lets us specify the source rectangle:
+The `drawImage()` method also has a _nine_ argument version which lets us specify the source rectangle:
 
 - `drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)`
-- `sx, sy, sWidth, sHeight` define the source rectangle.
-- `dx, dy, dWidth, dHeight` define the destination rectangle.
+- `s*` define the source rectangle.
+- `d*` define the destination rectangle.
 
 ::: notes
 This means we can trim out a section if the source image, then place it on the canvas, at any scale.
@@ -566,8 +566,13 @@ This means we can trim out a section if the source image, then place it on the c
 
 Sprites are two-dimensional images included in a larger scene.
 
+::: incremental
+
 - Often used for animation.
-- Multiple poses can be stored in one image - a **sprite sheet**.
+- Multiple poses can be stored in one image...
+- a **sprite sheet**
+
+:::
 
 ## Sprites {data-auto-animate="true"}
 
@@ -659,9 +664,13 @@ Draw one image, then draw another image _in the same place_.
 
 `requestAnimationFrame()`
 
+::: incremental
+
 - Tells the browser that you wish to perform an animation.
 - Requests that the browser calls a **callback** function.
 - The callback _updates_ an animation before the next **repaint**.
+
+:::
 
 ::: notes
 Formerly, to create an animation in JavaScript, we relied on setTimeout() called recursively or setInterval() to repeatedly execute some code to make changes to an element frame by frame, such as once every 50 milliseconds
@@ -673,8 +682,12 @@ Formerly, to create an animation in JavaScript, we relied on setTimeout() called
 
 A **callback** is a function passed as an argument to another function.
 
+::: incremental
+
 - The callback function is always passed a _timestamp_.
 - The timestamp gives the _milliseconds_ since the page was loaded.
+
+:::
 
 ::: notes
 The timestamp value therefore increases while the page remains loaded.
@@ -696,7 +709,13 @@ requestAnimationFrame(myCallBack)
 
 You will notice that we get only one value printed to console.
 
+::: incremental
+
 - We need to call `requestAnimationFrame()` again to get the next value.
+- and again...
+- and again...
+
+:::
 
 ::: notes
 and again, and again...
@@ -859,7 +878,7 @@ We changed the callback name to something more descriptive.
 ::::
 :::: {.column width=55%}
 
-We now have our sprites frames drawn alternately.
+We now have our sprite's frames drawn alternately.
 
 ::::
 :::
