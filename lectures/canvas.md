@@ -659,9 +659,9 @@ Draw one image, then draw another image _in the same place_.
 
 `requestAnimationFrame()`
 
-This method tells the browser that you wish to perform an animation
-and requests that the browser calls a **callback** function to update
-an animation before the next repaint.
+- Tells the browser that you wish to perform an animation.
+- Requests that the browser calls a **callback** function.
+- The callback _updates_ an animation before the next **repaint**.
 
 ::: notes
 Formerly, to create an animation in JavaScript, we relied on setTimeout() called recursively or setInterval() to repeatedly execute some code to make changes to an element frame by frame, such as once every 50 milliseconds
@@ -673,15 +673,16 @@ Formerly, to create an animation in JavaScript, we relied on setTimeout() called
 
 A **callback** is a function passed as an argument to another function.
 
-The callback function is passed a _timestamp_.
-
-The timestamp gives the number of _milliseconds_ since the page was loaded.
+- The callback function is always passed a _timestamp_.
+- The timestamp gives the _milliseconds_ since the page was loaded.
 
 ::: notes
 The timestamp value therefore increases while the page remains loaded.
 :::
 
 ## Using a callback function {data-auto-animate="true"}
+
+You will write the callback function:
 
 ```{.js }
 function myCallBack(timestamp) {
@@ -695,7 +696,7 @@ requestAnimationFrame(myCallBack)
 
 You will notice that we get only one value printed to console.
 
-We need to call `requestAnimationFrame()` again to get the next value.
+- We need to call `requestAnimationFrame()` again to get the next value.
 
 ::: notes
 and again, and again...
@@ -703,9 +704,9 @@ and again, and again...
 
 ## Recursion {data-auto-animate="true"}
 
-We can do this using **recursion**.
+We do this using **recursion**
 
-```{.js }
+```{.js data-line-numbers="1-6|3"}
 function myCallBack(timestamp) {
   console.log(timestamp)
   requestAnimationFrame(myCallBack)
@@ -714,6 +715,12 @@ function myCallBack(timestamp) {
 myCallBack()
 ```
 
+::: {.fragment}
+
+- we moved `requestAnimationFrame()` into our callback
+
+:::
+
 ::: notes
 Recursion is a technique that allows a function to call itself.
 It is a tricky subject to understand, so for now I will just give example code.
@@ -721,7 +728,7 @@ It is a tricky subject to understand, so for now I will just give example code.
 
 ## Recursion {data-auto-animate="true"}
 
-NB: Here we make a call to our function, to start the recursion.
+We make a call to our function, to start the recursion.
 
 ```{.js data-line-numbers="6"}
 function myCallBack(timestamp) {
@@ -752,15 +759,14 @@ Around 16 or 17 ms?
 
 ## Using a callback function {data-auto-animate="true"}
 
-Often we want to do something after a certain amount of time has passed.
+Often we want to do something after a period of time has passed.
 
-To do this, we can store the previous time globally and compare it to the current time.
-
-We can write a condition to check if the time has passed in our callback.
+- Store the previous time globally and compare it to the current time.
+- Check if the enough time has passed in our callback.
 
 ## Using a callback function {data-auto-animate="true"}
 
-```{.js data-line-numbers="1|4-6|8|11"}
+```{.js data-line-numbers="1-11|1|4-6|8|11"}
 let prevTime = 0
 
 function myCallBack(timestamp) {
@@ -809,7 +815,7 @@ let frame = 0
 
 Write a draw function.
 
-```{.js data-line-numbers="1-6|5"}
+```{.js data-line-numbers="1-6|4|5"}
 function draw(frame, x, y) {
   let sx = 41
   if (frame === 0) sx = 0
@@ -817,6 +823,8 @@ function draw(frame, x, y) {
   ctx.drawImage(sprite, sx, 0, 40, 29, x, y, 120, 87)
 }
 ```
+
+- We need to clear the canvas before the next paint.
 
 ## Animation {data-auto-animate="true"}
 
@@ -885,7 +893,30 @@ using an arrow function.
 As keys are pressed, the corresponding element in the object is set to true.
 :::
 
+## Keyboard Events {data-auto-animate="true"}
+
+To check if a key is pressed, we can read the `KEYS` object.
+
+```{.js }
+if (KEYS['ArrowLeft']) x -= 1
+if (KEYS['ArrowRight']) x += 1
+```
+
+::: notes
+This should provide a clue as to how to move an object around...
+:::
+
 ## Collision Detection {data-auto-animate="true"}
+
+Often we want to know if two objects are touching, or overlapping.
+
+- game characters
+- frame boundaries
+- UI elements
+
+::: notes
+collision detection is certainly a big topic - but we need to make a start here.
+:::
 
 ## AABB Collision Detection {data-auto-animate="true"}
 
