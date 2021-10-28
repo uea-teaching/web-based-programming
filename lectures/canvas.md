@@ -326,18 +326,20 @@ combination of the path tools.
 
 ## Paths {data-auto-animate="true"}
 
+Paths are not values that can be stored and passed around.
+
 ::: incremental
 
-- Paths are not values that can be stored and passed around.
 - You must make a sequence of method calls to describe its shape.
 
 :::
 
 ## Paths {data-auto-animate="true"}
 
+- Each segment created with `lineTo` starts at the path’s current position.
+
 ::: incremental
 
-- Each segment created with `lineTo` starts at the path’s current position.
 - The current position is usually the end of the last segment.
 - Or, it is the position passed to `moveTo`.
 
@@ -347,9 +349,13 @@ combination of the path tools.
 
 When filling a path:
 
+::: incremental
+
 - Each shape is filled separately.
 - A path can have multiple shapes.
 - The path needs to be closed.
+
+:::
 
 ## Paths {data-auto-animate="true"}
 
