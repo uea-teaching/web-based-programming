@@ -6,7 +6,11 @@ subtitle: Drawing on the HTML **\<canvas\>**
 author: Dr. David Greenwood
 date: \today
 output: pdf_document
+header-includes: |
+  \usepackage{xcolor}
 ---
+
+\pagecolor{yellow!30}
 
 The goal of this lab is to provide practical experience
 with the HTML5 canvas element.
